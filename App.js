@@ -7,7 +7,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 require("./config/passport")(passport);
-mongoose.connect('mongodb://localhost/test',{useNewUrlParser: true, useUnifiedTopology : true})
+mongoose.connect('mongodb://liargame:absolutemonster@ds059651.mlab.com:59651/heroku_r0wksrwp',{useNewUrlParser: true, useUnifiedTopology : true})
 .then(() => console.log('connected,,'))
 .catch((err)=> console.log(err));
 

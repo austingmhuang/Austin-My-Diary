@@ -2,22 +2,28 @@ const express = require('express');
 const router = express.Router();
 const {ensureAuthenticated} = require("../config/auth");
 const Entry = require('../models/entry');
-let userId;
+
+router.get('/', ensureAuthenticated, (req, res) => {
+    function next() {
+        res.render('dashboard', {
+            user:req.user
+        })
+    };
+    ensureAuthenticated(req, res, next)
+})
 
 router.get('/entries', ensureAuthenticated, (req, res) => {
     function next() {
-        userId = req.user_id;
         Entry
         .find({user: req.user._id})
         .exec(function(err, entries){
-            if(err) return handleError(err)
+            if(err) throw (err)
             res.render('entries', {
                 user:req.user,
                 entries: entries
             })
         })
     };
-    console.log(userId);
     ensureAuthenticated(req, res, next)
 })
 
@@ -25,15 +31,19 @@ router.post('/entries', ensureAuthenticated, (req, res) => {
     function next() {
         const{title, memo, temperature, date} = req.body
         const sampleEntry = new Entry({
-            user: userId,
+            user: req.user._id,
             title,
             memo,
             temperature,
             date     
         })
-        sampleEntry.save(function (err){
-            if(err) return handleError(err)
-        })      
+        sampleEntry
+        .save()
+        .then((value) => {
+            req.flash('success_msg', 'You added a new entry!')
+            res.redirect('/dashboard/entries')
+        })
+
     };
     ensureAuthenticated(req, res, next)
 })

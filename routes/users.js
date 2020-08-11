@@ -6,7 +6,7 @@ const passport = require('passport');
 const Entry = require('../models/entry');
 
 router.get('/login', (req, res, next) => {
-    res.render('Login');
+    res.render('login');
 })
 
 router.get('/register', (req, res) => {

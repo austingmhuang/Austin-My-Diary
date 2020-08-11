@@ -10,12 +10,4 @@ router.get('/register', (req, res) => {
     res.render('register');
 })
 
-router.get('/dashboard', ensureAuthenticated, (req, res) => {
-    function next() {
-        res.render('dashboard', {
-            user:req.user
-        })
-    };
-    ensureAuthenticated(req, res, next)
-})
 module.exports = router;

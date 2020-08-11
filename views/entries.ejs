@@ -1,10 +1,12 @@
 <h1>Entries</h1>
+<%- include ('./partials/messages') %>
 <p>Here are your entries <%=user.name%></p>
 <ul>
     <%for (let entry in entries){%>
       <li><%=entries[entry].title%>
         <%=entries[entry].memo%>
-        <%=entries[entry].temperature%> Celsius</li>    
+        <%=entries[entry].temperature%> Celsius
+        <%=entries[entry].date%></li>    
       <%}%>
 </ul>
 
@@ -23,6 +25,22 @@
             type="memo"
             name="memo"
             placeholder="Enter a Memo"
+        />
+    </div>
+    <div>
+        <label for="temperature">Entry temperature</label>
+        <input
+            type="temperature"
+            name="temperature"
+            placeholder="Enter a temperature"
+        />
+    </div>
+    <div>
+        <label for="date">Entry Memo</label>
+        <input
+            type="date"
+            name="date"
+            placeholder="Enter a date"
         />
     </div>
     <button type="submit" class="btn btn-primary btn-block">Save</button>
