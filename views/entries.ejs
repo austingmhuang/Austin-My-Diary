@@ -1,0 +1,31 @@
+<h1>Entries</h1>
+<p>Here are your entries <%=user.name%></p>
+<ul>
+    <%for (let entry in entries){%>
+      <li><%=entries[entry].title%>
+        <%=entries[entry].memo%>
+        <%=entries[entry].temperature%> Celsius</li>    
+      <%}%>
+</ul>
+
+<form action="/dashboard/entries" method = "POST">
+    <div>
+        <label for="title">Entry Title</label>
+        <input
+            type="title"
+            name="title"
+            placeholder="Enter a Title"
+        />
+    </div>
+    <div>
+        <label for="memo">Entry Memo</label>
+        <input
+            type="memo"
+            name="memo"
+            placeholder="Enter a Memo"
+        />
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Save</button>
+</form>
+
+<a href="/users/logout">Logout</a>

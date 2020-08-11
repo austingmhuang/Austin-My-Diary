@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../models/user")
 const bcrypt = require('bcrypt');
 const passport = require('passport');
+const Entry = require('../models/entry');
 
 router.get('/login', (req, res, next) => {
     res.render('Login');
@@ -54,6 +55,24 @@ router.post('/register', (req, res) => {
                         newUser
                         .save()
                         .then((value) => {
+                            const sampleEntry = new Entry({
+                                user: newUser._id,
+                                title: "Sample Entry",
+                                memo: "Sample Memo",
+                                temperature: 36.7       
+                            })
+                            sampleEntry.save(function (err){
+                                if(err) return handleError(err)
+                            })
+
+                            // Not sure if I need this
+                            Entry.findOne({title: "Sample Entry"})
+                            .populate('user')
+                            .exec(function(err, entry){
+                                if(err) return handleError(err);
+                                console.log('The author is', entry.user.name)
+                            })
+                            
                             console.log(value)
                             req.flash('success_msg', 'You have now registered!')
                             res.redirect('/users/login')
@@ -67,6 +86,7 @@ router.post('/register', (req, res) => {
 })
 
 router.post('/login', (req, res, next) => {
+    console.log(req);
     passport.authenticate('local', {
         successRedirect : '/dashboard',
         failureRedirect : '/users/login',
