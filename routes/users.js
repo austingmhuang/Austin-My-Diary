@@ -70,7 +70,6 @@ router.post('/register', (req, res) => {
                             .populate('user')
                             .exec(function(err, entry){
                                 if(err) return handleError(err);
-                                console.log('The author is', entry.user.name)
                             })
                             
                             console.log(value)
@@ -86,7 +85,6 @@ router.post('/register', (req, res) => {
 })
 
 router.post('/login', (req, res, next) => {
-    console.log(req);
     passport.authenticate('local', {
         successRedirect : '/dashboard',
         failureRedirect : '/users/login',
