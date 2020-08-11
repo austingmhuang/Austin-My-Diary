@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {ensureAuthenticated} = require("../config/auth");
 const Entry = require('../models/entry');
-const userId;
+let userId;
 
 router.get('/entries', ensureAuthenticated, (req, res) => {
     function next() {
