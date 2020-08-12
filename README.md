@@ -17,7 +17,7 @@ Change the URL App.js file or create your own .env file and put your url there.
 
 # Run Yarn Start
 
-And it should be working.
+And it should be working on localhost:3000.
 
 # Known Issues
 They're in the issues tab. I'm working on it, okay?
