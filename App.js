@@ -10,7 +10,8 @@ const dotenv = require('dotenv');
 require("./config/passport")(passport);
 
 dotenv.config()
-const url = process.env.MONGOLAB_URI
+const url = process.env.MONGOLAB_URI;
+
 mongoose.connect(url,{useNewUrlParser: true, useUnifiedTopology : true})
 .then(() => console.log('connected,,'))
 .catch((err)=> console.log(err));
