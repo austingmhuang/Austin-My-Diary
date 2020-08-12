@@ -11,7 +11,7 @@ require("./config/passport")(passport);
 
 // dotenv.config()
 // const url = process.env.MONGOLAB_URI
-mongoose.connect("mongodb+srv://liargame:absolutemonster@cluster0.jgqhb.mongodb.net/heroku_r0wksrwp?retryWrites=true&w=majority",{useNewUrlParser: true, useUnifiedTopology : true})
+mongoose.connect("mongodb+srv://<username>:<password>@cluster0.jgqhb.mongodb.net/heroku_r0wksrwp?retryWrites=true&w=majority",{useNewUrlParser: true, useUnifiedTopology : true})
 .then(() => console.log('connected,,'))
 .catch((err)=> console.log(err));
 
