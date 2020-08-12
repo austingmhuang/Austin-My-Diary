@@ -9,7 +9,7 @@ const passport = require('passport');
 const dotenv = require('dotenv');
 require("./config/passport")(passport);
 
-dotenv.config()
+dotenv.config({silent: process.env.NODE_ENV === "production"})
 const url = process.env.MONGOLAB_URI;
 
 mongoose.connect(url,{useNewUrlParser: true, useUnifiedTopology : true})
