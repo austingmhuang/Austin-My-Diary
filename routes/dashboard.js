@@ -39,7 +39,7 @@ router.post('/entries', ensureAuthenticated, (req, res) => {
         })
         sampleEntry
         .save()
-        .then((value) => {
+        .then(() => {
             req.flash('success_msg', 'You added a new entry!')
             res.redirect('/dashboard/entries')
         })

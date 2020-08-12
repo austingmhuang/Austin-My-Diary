@@ -65,14 +65,11 @@ router.post('/register', (req, res) => {
                                 if(err) return handleError(err)
                             })
 
-                            // Not sure if I need this
                             Entry.findOne({title: "Sample Entry"})
                             .populate('user')
                             .exec(function(err, entry){
                                 if(err) return handleError(err);
                             })
-                            
-                            console.log(value)
                             req.flash('success_msg', 'You have now registered!')
                             res.redirect('/users/login')
                         })
