@@ -3,9 +3,7 @@
 <p>Here are your entries <%=user.name%></p>
 <ul>
     <%for (let entry in entries){%>
-      <li><%=entries[entry].title%>
-        <%=entries[entry].memo%>
-        <%=entries[entry].temperature%> Celsius
+      <li> <a href='./entries/<%-entries[entry].EntryId %> '><%=entries[entry].title%></a>
         <%=entries[entry].date%></li>    
       <%}%>
 </ul>

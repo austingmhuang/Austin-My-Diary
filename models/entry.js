@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-auto-increment');
 const entrySchema = new mongoose.Schema({
     user :{
         type: mongoose.Schema.Types.ObjectId, 
@@ -23,6 +24,8 @@ const entrySchema = new mongoose.Schema({
     }
 });
 
+entrySchema.plugin(autoIncrement.plugin, {model:'Entry', field:'EntryId'});
 const Entry = mongoose.model('Entry', entrySchema)
+
 
 module.exports = Entry;

@@ -7,6 +7,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 const dotenv = require('dotenv');
+const autoIncrement = require('mongoose-auto-increment')
 require("./config/passport")(passport);
 
 dotenv.config({silent: process.env.NODE_ENV === "production"})
@@ -15,6 +16,9 @@ const url = process.env.MONGOLAB_URI;
 mongoose.connect(url,{useNewUrlParser: true, useUnifiedTopology : true})
 .then(() => console.log('connected,,'))
 .catch((err)=> console.log(err));
+
+const connection = mongoose.connection;
+autoIncrement.initialize(connection);
 
 app.set('view engine', 'ejs');
 app.use(expressEjsLayout);

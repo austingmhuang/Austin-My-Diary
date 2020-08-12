@@ -27,6 +27,22 @@ router.get('/entries', ensureAuthenticated, (req, res) => {
     ensureAuthenticated(req, res, next)
 })
 
+router.get('/entries/:entry', ensureAuthenticated, (req, res) => {
+    function next() {
+        Entry
+        .find({EntryId: req.params.entry, user:req.user._id})
+        .exec(function(err, entry){
+            if(err) throw (err)
+            console.log(entry);
+            console.log(entry[0])
+            res.render('entry',{
+                entry:entry[0]
+            })
+        })
+    };
+    ensureAuthenticated(req, res, next)
+})
+
 router.post('/entries', ensureAuthenticated, (req, res) => {
     function next() {
         const{title, memo, temperature, date} = req.body
