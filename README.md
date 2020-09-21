@@ -1,4 +1,4 @@
-# This is a very casual diary type of app. All you do is register, sign in, and you can write memos to yourself. That's basically it. You could use it to track your temperature too.
+# This is a very casual diary type of app. All you do is register, sign in, and you can write memos to yourself.
 
 This was made in my time as a student in Code Chrysalis.
 
