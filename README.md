@@ -1,5 +1,6 @@
-# This is a very casual diary type of app. All you do is register, sign in, and you can write memos to yourself.
+# Introduction
 
+This is a very casual diary type of app. All you do is register, sign in, and you can write memos to yourself.
 This was made in my time as a student in Code Chrysalis.
 
 # How to use
